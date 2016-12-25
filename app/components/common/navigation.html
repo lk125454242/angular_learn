@@ -1,0 +1,83 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse" full-scroll>
+        <span close-off-canvas></span>
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+
+                <div class="profile-element" uib-dropdown>
+                    <a uib-dropdown-toggle="" href>
+                        <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">{{main.userName}}</strong>
+                             </span>
+                        <span class="text-muted text-xs block">快捷菜单<b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul uib-dropdown-menu class="animated flipInX m-t-xs">
+                        <li><a href="">登出</a></li>
+                    </ul>
+                </div>
+
+                <div class="logo-element">
+                    LK+
+                </div>
+
+            </li>
+
+            <!-- 样式类   a fa-laptop   fa fa-desktop-->
+
+            <li ui-sref-active="active1">
+                <a ui-sref="authority"><i class="fa fa-sitemap"></i> <span class="nav-label">权限管理</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li>
+                        <a ui-sref="authority.user">用户权限 <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li ui-sref-active="active">
+                                <a ui-sref="authority.user.manage">管理权限</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a ui-sref="authority.role">角色权限 <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li ui-sref-active="active">
+                                <a ui-sref="authority.role.create">注册新权限</a>
+                            </li>
+                            <li ui-sref-active="active">
+                                <a ui-sref="authority.role.manage">管理权限</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a ui-sref="authority.router">路由权限 <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li ui-sref-active="active">
+                                <a ui-sref="authority.router.create">注册新权限</a>
+                            </li>
+                            <li ui-sref-active="active">
+                                <a ui-sref="authority.router.manage">管理权限</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- 记事本 -->
+
+            <li ui-sref-active="active1">
+                <a ui-sref="notepad"><i class="fa fa-sitemap"></i> <span class="nav-label">记事本</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li ui-sref-active="active">
+                        <a ui-sref="notepad.classify.manage">分类管理</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="notepad.media.manage">媒资管理</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>

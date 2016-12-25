@@ -1,0 +1,54 @@
+<div ng-controller="ClassifyController as Classify" class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>分类管理</h5>
+                    <div ibox-tools></div>
+                </div>
+
+                <div class="ibox-content">
+                    <div class="clearfix">
+                        <button ng-click="Classify.create()" type="button" class="btn btn-info">
+                            <em class="fa fa-plus"></em>
+                        </button>
+
+                        <button ng-if="!Classify.drag" ng-click="Classify.drag = true" type="button" class="pull-right btn btn-warning">
+                            <em class="fa fa-pencil"></em>
+                        </button>
+
+                        <button ng-if="Classify.drag" ng-click="Classify.drag = false" type="button" class="pull-right btn btn-primary">
+                            <em class="fa fa-save"></em>
+                        </button>
+                    </div>
+                    <!-- tree 开始 -->
+                    <div ui-tree="Classify.treeOptions">
+                        <ol ui-tree-nodes="" ng-model="Classify.list">
+                            <li ng-repeat="node in Classify.list" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+                        </ol>
+                    </div>
+                    <!-- tree 结束 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content">
+        <a href="javascript:return false;" class="pull-right btn btn-white btn-xs" data-nodrag ng-click="Classify.remove(this)">
+            <span class="fa fa-trash"></span>
+        </a>
+        <a href="javascript:return false;" class="pull-right btn btn-white btn-xs" data-nodrag ng-click="Classify.newSubItem(this)">
+            <span class="fa fa-plus"></span>
+        </a>
+        <a href="javascript:return false;" class="btn btn-primary btn-xs" data-nodrag ng-click="Classify.toggle(this)">
+            <span class="fa" ng-class="{'fa-angle-down': collapsed, 'fa-angle-right': !collapsed}"></span>
+        </a>
+        <span onclick="return false" editable-text="node.name" onbeforesave="Classify.update($data, node)">{{node.name}}</span>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.children" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'">
+        </li>
+    </ol>
+</script>

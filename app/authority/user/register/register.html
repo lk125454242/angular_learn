@@ -1,0 +1,77 @@
+<div ng-controller="RegisterController as register" class="middle-box text-center loginscreen   animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">LK+</h1>
+        </div>
+        <h3>加入LK+</h3>
+        <p>现在来创建账户吧</p>
+        <form name="register_form" class="m-t" role="form" ng-submit="register.submit()">
+            <div class="form-group">
+                <input ng-model="register.username" minlength="6" maxlength="22" required="true" pattern="^[A-z][A-z0-9]{7,21}$" name="username" type="text" class="form-control" placeholder="请输入用户名" required="required">
+                <div ng-messages="register_form.username.$error">
+                    <div class="label label-danger" ng-message="required">
+                        用户名不能为空
+                    </div>
+                    <div class="label label-danger" ng-message="minlength">
+                        用户名长度不能小于6位
+                    </div>
+                    <div class="label label-danger" ng-message="maxlength">
+                        用户名长度不能大于22位
+                    </div>
+                    <div class="label label-danger" ng-message="pattern">
+                        用户名必须以字母开头，由字母与数字组成
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input ng-model="register.password" minlength="6" maxlength="18" required="true" pattern="\w{6,18}" name="password" type="password" class="form-control" placeholder="请输入密码" required="required">
+                <div ng-messages="register_form.password.$error">
+                    <div class="label label-danger" ng-message="required">
+                        密码不能为空
+                    </div>
+                    <div class="label label-danger" ng-message="minlength">
+                        密码长度不能小于6位
+                    </div>
+                    <div class="label label-danger" ng-message="maxlength">
+                        密码长度不能大于18位
+                    </div>
+                    <div class="label label-danger" ng-message="pattern">
+                        密码只能包含字符、数字和下划线
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input ng-model="register.password_repeat" name="password_repeat" type="password" class="form-control" placeholder="请输入密码" required="true">
+                <div ng-messages="register.password_repeat != register.password">
+                    <div class="label label-danger" ng-show="register.password_repeat != register.password">
+                        两次密码输入不一致
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input ng-model="register.email" name="email" type="email" class="form-control" placeholder="请输入邮箱" required="required">
+                <div ng-messages="register_form.email.$error">
+                    <div class="label label-danger" ng-message="required">
+                        邮箱不能为空
+                    </div>
+                    <div class="label label-danger" ng-message="email">
+                        邮箱不符合规范
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox i-checks">
+                    <label>
+                        <input ng-model="register.igree" ng-checked="register.igree" name="igree" type="checkbox">
+                        <i></i> 同意加入LK社区 
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">注册</button>
+
+            <p class="text-muted text-center"><small>已经有账户了?</small></p>
+            <a class="btn btn-sm btn-white btn-block" href="#/login">登录</a>
+        </form>
+        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+    </div>
+</div>
